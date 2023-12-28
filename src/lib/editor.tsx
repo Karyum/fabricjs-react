@@ -5,6 +5,7 @@ import {
   TRIANGLE,
   CUBE_FACE,
   LINE,
+  ARROW,
   TEXT,
   FILL,
   STROKE
@@ -81,7 +82,7 @@ const buildEditor = (
       const object = new fabric.Group(
         calculateArrowPoints(startPoint, endPoint),
         {
-          ...LINE.options,
+          ...ARROW(params),
           stroke: strokeColor
         }
       )
