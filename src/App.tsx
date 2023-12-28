@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { FabricJSCanvas, useFabricJSEditor } from './lib'
+import './App.css'
 
 function App() {
   const { selectedObjects, editor, onReady } = useFabricJSEditor({
@@ -15,6 +16,14 @@ function App() {
   const onAddRectangle = () => {
     editor?.addRectangle()
   }
+
+  const onAddTriangle = () => {
+    editor?.addTriangle()
+  }
+
+  const onAddArrow = () => {
+    editor?.addArrow()
+  }
   const onAddLine = () => {
     editor?.addLine()
   }
@@ -23,6 +32,9 @@ function App() {
       return editor?.updateText(text)
     }
     editor?.addText(text)
+  }
+  const onAddCubeFace = () => {
+    editor?.addCubeFace()
   }
   const onSetStrokeColor = () => {
     editor?.setStrokeColor(strokeColor)
@@ -50,6 +62,9 @@ function App() {
           <button onClick={onZoomOut}>Zoom Out</button>
           <button onClick={onAddCircle}>Add circle</button>
           <button onClick={onAddRectangle}>Add Rectangle</button>
+          <button onClick={onAddTriangle}>Add Triangle</button>
+          <button onClick={onAddArrow}>Add Arrow</button>
+          <button onClick={onAddCubeFace}>Add Cube face</button>
           <button onClick={onAddLine}>Add Line</button>
           <button onClick={onDeleteAll}>Delete All</button>
           <button onClick={onDeleteSelected}>Delete Selected</button>
@@ -80,7 +95,15 @@ function App() {
       ) : (
         <>Loading...</>
       )}
-      <FabricJSCanvas className='sample-canvas' onReady={onReady} />
+      <div
+        style={{
+          width: '800px',
+          height: '500px',
+          border: '1px solid #000000'
+        }}
+      >
+        <FabricJSCanvas className='sample-canvas' onReady={onReady} />
+      </div>
     </>
   )
 }

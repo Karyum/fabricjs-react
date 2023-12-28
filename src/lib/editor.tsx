@@ -1,11 +1,29 @@
 import { fabric } from 'fabric'
-import { CIRCLE, RECTANGLE, LINE, TEXT, FILL, STROKE } from './defaultShapes'
+import {
+  CIRCLE,
+  RECTANGLE,
+  TRIANGLE,
+  CUBE_FACE,
+  LINE,
+  TEXT,
+  FILL,
+  STROKE
+} from './defaultShapes'
 import { useEffect, useState } from 'react'
+import calculateArrowPoints from './calculateArrowPoints'
+
+export interface ShapeParams {
+  x?: number
+  y?: number
+}
 
 export interface FabricJSEditor {
   canvas: fabric.Canvas
-  addCircle: () => void
-  addRectangle: () => void
+  addCircle: (params?: ShapeParams) => void
+  addRectangle: (params?: ShapeParams) => void
+  addTriangle: (params?: ShapeParams) => void
+  addArrow: (params?: ShapeParams) => void
+  addCubeFace: (params?: ShapeParams) => void
   addLine: () => void
   addText: (text: string) => void
   updateText: (text: string) => void
@@ -32,20 +50,61 @@ const buildEditor = (
 ): FabricJSEditor => {
   return {
     canvas,
-    addCircle: () => {
+    addCircle: (params: ShapeParams = {}) => {
       const object = new fabric.Circle({
-        ...CIRCLE,
+        ...CIRCLE(params),
         fill: fillColor,
         stroke: strokeColor
       })
       canvas.add(object)
     },
-    addRectangle: () => {
+    addRectangle: (params: ShapeParams = {}) => {
       const object = new fabric.Rect({
-        ...RECTANGLE,
+        ...RECTANGLE(params),
         fill: fillColor,
         stroke: strokeColor
       })
+      canvas.add(object)
+    },
+    addTriangle: (params: ShapeParams = {}) => {
+      const object = new fabric.Triangle({
+        ...TRIANGLE(params),
+        fill: fillColor,
+        stroke: strokeColor
+      })
+      canvas.add(object)
+    },
+    addArrow: (params: ShapeParams = {}) => {
+      const startPoint = { x: params.x || 100, y: params.y || 100 }
+      const endPoint = { x: startPoint.x + 100, y: startPoint.y + 100 }
+
+      const object = new fabric.Group(
+        calculateArrowPoints(startPoint, endPoint),
+        {
+          ...LINE.options,
+          stroke: strokeColor
+        }
+      )
+
+      canvas.add(object)
+    },
+    addCubeFace: (params: ShapeParams = {}) => {
+      const width = 50
+      const height = 50
+      const depth = 10
+
+      const upperFaceVertices = [
+        { x: width / 2, y: 0 },
+        { x: width, y: height / 2 },
+        { x: width / 2, y: height },
+        { x: 0, y: height / 2 }
+      ]
+
+      const object = new fabric.Polygon(upperFaceVertices, {
+        ...CUBE_FACE(params),
+        stroke: strokeColor
+      })
+
       canvas.add(object)
     },
     addLine: () => {
