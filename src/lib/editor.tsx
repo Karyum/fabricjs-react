@@ -25,6 +25,7 @@ export interface FabricJSEditor {
   addTriangle: (params?: ShapeParams) => void
   addArrow: (params?: ShapeParams) => void
   addCubeFace: (params?: ShapeParams) => void
+  setBrushColor: (color: string) => void
   addLine: () => void
   addText: (text: string) => void
   updateText: (text: string) => void
@@ -157,6 +158,9 @@ const buildEditor = (
         object.set({ stroke })
       })
       canvas.renderAll()
+    },
+    setBrushColor: (color: string) => {
+      canvas.freeDrawingBrush.color = color
     },
     zoomIn: () => {
       const zoom = canvas.getZoom()
