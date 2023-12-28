@@ -1,7 +1,7 @@
 {
     "name": "@karyum/fabricjs-react",
     "namespace": "@karyum",
-    "version": "1.2.1",
+    "version": "1.3.0",
     "description": "support fabricjs from react",
     "author": "Alejandro Soto",
     "license": "MIT",
