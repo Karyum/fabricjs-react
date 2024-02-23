@@ -17,6 +17,14 @@ function App() {
     editor?.addRectangle()
   }
 
+  const onAddBorderedRectangle = () => {
+    editor?.addBorderedRectangle()
+  }
+
+  const onAddRightTriangle = () => {
+    editor?.addRightTriangle()
+  }
+
   const onAddTriangle = () => {
     editor?.addTriangle()
   }
@@ -62,6 +70,10 @@ function App() {
           <button onClick={onZoomOut}>Zoom Out</button>
           <button onClick={onAddCircle}>Add circle</button>
           <button onClick={onAddRectangle}>Add Rectangle</button>
+          <button onClick={onAddBorderedRectangle}>
+            Add Bordered Rectangle
+          </button>
+          <button onClick={onAddRightTriangle}>Add Right Triangle</button>
           <button onClick={onAddTriangle}>Add Triangle</button>
           <button onClick={onAddArrow}>Add Arrow</button>
           <button onClick={onAddCubeFace}>Add Cube face</button>

@@ -8,7 +8,8 @@ import {
   ARROW,
   TEXT,
   FILL,
-  STROKE
+  STROKE,
+  RIGHT_TRIANGLE
 } from './defaultShapes'
 import { useEffect, useState } from 'react'
 import calculateArrowPoints from './calculateArrowPoints'
@@ -22,6 +23,8 @@ export interface FabricJSEditor {
   canvas: fabric.Canvas
   addCircle: (params?: ShapeParams) => void
   addRectangle: (params?: ShapeParams) => void
+  addBorderedRectangle: (params?: ShapeParams) => void
+  addRightTriangle: (params?: ShapeParams) => void
   addTriangle: (params?: ShapeParams) => void
   addArrow: (params?: ShapeParams) => void
   addCubeFace: (params?: ShapeParams) => void
@@ -68,12 +71,38 @@ const buildEditor = (
       })
       canvas.add(object)
     },
+    addBorderedRectangle: (params: ShapeParams = {}) => {
+      const object = new fabric.Rect({
+        ...RECTANGLE(params),
+        fill: fillColor,
+        stroke: strokeColor,
+        rx: 5,
+        ry: 5,
+        strokeLineJoin: 'round'
+      })
+      canvas.add(object)
+    },
     addTriangle: (params: ShapeParams = {}) => {
       const object = new fabric.Triangle({
         ...TRIANGLE(params),
         fill: fillColor,
         stroke: strokeColor
       })
+      canvas.add(object)
+    },
+    addRightTriangle: (params: ShapeParams = {}) => {
+      const object = new fabric.Polyline(
+        [
+          { x: 5, y: 15 },
+          { x: 95, y: 15 },
+          { x: 95, y: 85 }
+        ],
+        {
+          ...RIGHT_TRIANGLE(params),
+          fill: fillColor,
+          stroke: strokeColor
+        }
+      )
       canvas.add(object)
     },
     addArrow: (params: ShapeParams = {}) => {

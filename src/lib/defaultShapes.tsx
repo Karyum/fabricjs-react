@@ -31,6 +31,16 @@ export const TRIANGLE = ({ x, y }: ShapeParams) => ({
   angle: 0
 })
 
+export const RIGHT_TRIANGLE = ({ x, y }: ShapeParams) => ({
+  left: x || 100,
+  top: y || 100,
+  fill: FILL,
+  strokeWidth: 0,
+  width: 40,
+  height: 40,
+  angle: 180
+})
+
 export const ARROW = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
