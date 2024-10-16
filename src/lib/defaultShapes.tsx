@@ -36,15 +36,15 @@ export const RIGHT_TRIANGLE = ({ x, y }: ShapeParams) => ({
   top: y || 100,
   fill: FILL,
   strokeWidth: 0,
-  width: 40,
-  height: 40,
+  width: 30,
+  height: 30,
   angle: 180
 })
 
 export const ARROW = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
-  fill: 'black',
+  fill: 'FILL',
   strokeWidth: 0,
   width: 50,
   height: 50
@@ -53,7 +53,7 @@ export const ARROW = ({ x, y }: ShapeParams) => ({
 export const CUBE_FACE = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
-  fill: 'black',
+  fill: 'FILL',
   strokeWidth: 0,
   width: 50,
   height: 50

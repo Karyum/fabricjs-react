@@ -77,7 +77,7 @@ const buildEditor = (
         fill: fillColor,
         stroke: strokeColor,
         rx: 5,
-        ry: 5,
+        ry: 8,
         strokeLineJoin: 'round'
       })
       canvas.add(object)
