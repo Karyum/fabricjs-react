@@ -76,9 +76,13 @@ const buildEditor = (
         ...RECTANGLE(params),
         fill: fillColor,
         stroke: strokeColor,
-        rx: 5,
-        ry: 5,
-        strokeLineJoin: 'round'
+        rx: 10,
+        ry: 10,
+        height: 80,
+        strokeLineJoin: 'round',
+        strokeWidth: 4,
+        strokeUniform: true,
+        padding: 10
       })
       canvas.add(object)
     },
@@ -93,14 +97,19 @@ const buildEditor = (
     addRightTriangle: (params: ShapeParams = {}) => {
       const object = new fabric.Polyline(
         [
-          { x: 5, y: 15 },
+          { x: 0, y: 15 },
           { x: 95, y: 15 },
-          { x: 95, y: 85 }
+          { x: 95, y: 85 },
+          { x: 0, y: 15 },
+          { x: 95, y: 15 }
         ],
         {
           ...RIGHT_TRIANGLE(params),
           fill: fillColor,
-          stroke: strokeColor
+          stroke: strokeColor,
+          strokeWidth: 5,
+          strokeUniform: true,
+          padding: 10
         }
       )
       canvas.add(object)

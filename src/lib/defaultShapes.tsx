@@ -7,7 +7,8 @@ export const CIRCLE = ({ x, y }: ShapeParams) => ({
   radius: 20,
   left: x || 100,
   top: y || 100,
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   fill: FILL
 })
 
@@ -15,7 +16,8 @@ export const RECTANGLE = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
   fill: FILL,
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   width: 40,
   height: 40,
   angle: 0
@@ -25,7 +27,8 @@ export const TRIANGLE = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
   fill: FILL,
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   width: 40,
   height: 40,
   angle: 0
@@ -35,7 +38,8 @@ export const RIGHT_TRIANGLE = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
   fill: FILL,
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   width: 40,
   height: 40,
   angle: 180
@@ -45,7 +49,8 @@ export const ARROW = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
   fill: 'black',
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   width: 50,
   height: 50
 })
@@ -54,7 +59,8 @@ export const CUBE_FACE = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
   fill: 'black',
-  strokeWidth: 0,
+  strokeWidth: 4,
+  strokeUniform: true,
   width: 50,
   height: 50
 })
