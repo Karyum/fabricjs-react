@@ -1,5 +1,7 @@
 # fabricjs-react fork
 
+> This is a fork from [the following package](https://www.npmjs.com/package/fabricjs-react)
+
 ## To publish
 
 Follow these steps
