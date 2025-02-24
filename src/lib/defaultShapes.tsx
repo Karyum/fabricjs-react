@@ -48,9 +48,9 @@ export const RIGHT_TRIANGLE = ({ x, y }: ShapeParams) => ({
 export const ARROW = ({ x, y }: ShapeParams) => ({
   left: x || 100,
   top: y || 100,
-  fill: 'black',
   strokeWidth: 4,
   strokeUniform: true,
+  fill: FILL,
   width: 100,
   height: 100
 })

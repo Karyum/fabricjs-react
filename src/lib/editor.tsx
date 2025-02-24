@@ -119,9 +119,10 @@ const buildEditor = (
       const endPoint = { x: startPoint.x + 100, y: startPoint.y + 100 }
 
       const object = new fabric.Group(
-        calculateArrowPoints(startPoint, endPoint),
+        calculateArrowPoints(startPoint, endPoint, fillColor),
         {
           ...ARROW(params),
+          fill: fillColor,
           stroke: strokeColor
         }
       )

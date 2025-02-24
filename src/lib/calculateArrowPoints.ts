@@ -1,8 +1,8 @@
 import { fabric } from 'fabric'
 
-const calculateArrowPoints = (startPoint: any, endPoint: any) => {
+const calculateArrowPoints = (startPoint: any, endPoint: any, fill: string) => {
   const arrowWidth = 2
-  const arrowColor = 'black'
+  const arrowColor = fill || 'black'
   const startX = startPoint.x
   const startY = startPoint.y
   const endX = endPoint.x
