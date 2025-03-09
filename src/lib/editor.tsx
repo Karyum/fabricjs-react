@@ -122,7 +122,6 @@ const buildEditor = (
         calculateArrowPoints(startPoint, endPoint, fillColor),
         {
           ...ARROW(params),
-          fill: fillColor,
           stroke: strokeColor
         }
       )
@@ -183,7 +182,15 @@ const buildEditor = (
     strokeColor,
     setFillColor: (fill: string) => {
       _setFillColor(fill)
-      canvas.getActiveObjects().forEach((object) => object.set({ fill }))
+      canvas.getActiveObjects().forEach((object: any) => {
+        if (object.type === 'group') {
+          object?._objects.forEach((obj: any) => {
+            obj.set({ fill, stroke: fill })
+          })
+        } else {
+          object.set({ fill })
+        }
+      })
       canvas.renderAll()
     },
     setStrokeColor: (stroke: string) => {
